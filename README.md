@@ -7,6 +7,12 @@ A small, local, Windows companion for [Claude Code](https://claude.com/claude-co
 loud** and shows a **pixel avatar** in a corner of your screen that reacts to what Claude is doing, so you know what
 is going on while you work in other apps.
 
+### Watch the showcase video
+
+[![Claude Code Companion showcase video](https://img.youtube.com/vi/tEGiuBYcb7Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=tEGiuBYcb7Y)
+
+*Click the picture to watch it on YouTube (about 3 minutes).*
+
 | | |
 |---|---|
 | **`read-aloud/`** | A Claude Code `Stop` hook that speaks Claude's final reply with a local voice (Windows voice, or the optional Voice Studio app). |
