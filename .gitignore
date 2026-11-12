@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# per-machine files
+avatar-app/config.json
+avatar-app/state/
+read-aloud/config.json
+read-aloud/state/
+*.bak*
+
+# reference art and character packs are other people's characters: keep them out of the repo
+avatar-app/assets/refs/
+avatar-app/packs/*
+!avatar-app/packs/default/

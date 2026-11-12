@@ -1,0 +1,12 @@
+{
+  "enabled": false,
+  "engine": "auto",
+  "voicestudio_url": "http://127.0.0.1:3900",
+  "voice": "alloy",
+  "speed": 1.0,
+  "sapi_voice": "",
+  "sapi_rate": 0,
+  "max_chars": 6000,
+  "first_chunk": 160,
+  "chunk": 420
+}

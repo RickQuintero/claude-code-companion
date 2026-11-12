@@ -1,0 +1,7 @@
+{
+  "name": "Claude mascot",
+  "fps": 8,
+  "blink_min": 3.0,
+  "blink_max": 6.0,
+  "blink_ms": 120
+}
