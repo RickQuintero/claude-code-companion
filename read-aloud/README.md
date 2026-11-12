@@ -36,5 +36,11 @@ PowerShell script through an environment variable. Non-local URLs are refused. T
 While audio plays it writes `state/speaking.json` (`speaking` plus an `until` time that expires by itself if the worker
 is killed), which the avatar uses to move its mouth.
 
+## If a reply is not spoken
+Look at `state/hook.log`. Each reply adds one line (never the reply text): `hook: skipped (off)`, `hook: spawned worker`,
+`worker: done`, or `hook: error <ExceptionType>` / `worker: error <ExceptionType>`. The hook reads Claude's message as
+UTF-8, so emoji and accented characters are fine. A nearly full memory (for example a heavy AI tool running next to it)
+can make the hook too slow; free some RAM or close that tool.
+
 ## Develop
 `..\.venv\Scripts\python.exe -m pytest -q` from this folder.

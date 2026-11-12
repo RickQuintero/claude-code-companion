@@ -283,6 +283,29 @@ def _tmp_dir() -> Path:
     return d
 
 
+def log_event(message: str) -> None:
+    """One line in state/hook.log so a silent failure can be explained later. Never put reply text in `message`."""
+    try:
+        STATE_DIR.mkdir(parents=True, exist_ok=True)
+        path = STATE_DIR / "hook.log"
+        if path.exists() and path.stat().st_size > 64 * 1024:                  # keep it small: drop the older half
+            path.write_text(path.read_text(encoding="utf-8", errors="replace")[-32 * 1024:], encoding="utf-8")
+        with path.open("a", encoding="utf-8") as f:
+            f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} {message}\n")
+    except OSError:
+        pass
+
+
+def prune_tmp(max_age: float = 3600.0) -> None:
+    """Remove temp text files that a worker never picked up (for example a hook that was killed half way)."""
+    try:
+        for f in _tmp_dir().iterdir():
+            if f.is_file() and time.time() - f.stat().st_mtime > max_age:
+                f.unlink(missing_ok=True)
+    except OSError:
+        pass
+
+
 def _pid_file() -> Path:
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     return STATE_DIR / "worker.pid"
